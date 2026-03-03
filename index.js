@@ -3,6 +3,8 @@ const app = express(); // Crea una instancia de la aplicación Express
 const apiRouter = require('./server'); // Importa el enrutador de la API desde el archivo 'server/index.js'
 const port = 3000; // Cambia esto al número de puerto que desees
 
+app.use(express.json());
+
 // Middleware para analizar (parsear) cuerpos en formato JSON  
 app.get('/', (req, res) => { // Define una ruta para la URL raíz
 //req es el objeto de solicitud (request) que contiene información sobre la solicitud del cliente

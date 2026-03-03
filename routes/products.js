@@ -19,6 +19,16 @@ router.get('/', (req, res) => {
 });
 
 
+router.post('/', (req, res) => {
+    const body = req.body; // Extrae el cuerpo de la solicitud (request body) que contiene los datos enviados por el cliente
+    console.log(body); // Imprime el cuerpo de la solicitud en la consola
+    res.json({
+        ok: true,
+        data: body
+    });
+});
+
+
 // Define una ruta para la URL '/products' que responde con un objeto JSON que representa un producto
 router.get('/:id', (req, res) => { 
         const {id} = req.params; // Extrae el valor del parámetro 'id' de la URL
