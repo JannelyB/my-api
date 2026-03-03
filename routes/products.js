@@ -28,6 +28,24 @@ router.post('/', (req, res) => {
     });
 });
 
+router.patch('/:id', (req, res) => {
+    const {id} = req.params; // Extrae el valor del parámetro 'id' de la URL
+    const body = req.body;
+    res.json({
+        message: 'success',
+        product: body,
+        id,
+    });
+});
+
+router.delete('/:id', (req, res) => {
+    const {id} = req.params; // Extrae el valor del parámetro 'id' de la URL
+    res.json({
+        message: 'DELETED',
+        id,
+    });
+});
+
 
 // Define una ruta para la URL '/products' que responde con un objeto JSON que representa un producto
 router.get('/:id', (req, res) => { 
