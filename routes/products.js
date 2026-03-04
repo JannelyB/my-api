@@ -3,30 +3,32 @@ const productServices = require('../services/servicesProducts'); // Importa el s
 const router = express.Router(); // Crea una instancia de un enrutador de Express
 
 
-router.get('/', (req, res) => { 
-    const products = productServices.getAllProducts(req, res); // Llama a la función getAllProducts del servicio de productos para obtener una lista de productos
+router.get('/', async (req, res) => { 
+    const products = await productServices.getAllProducts(req, res); // Llama a la función getAllProducts del servicio de productos para obtener una lista de productos
     res.json(products);
 });
 
 
-router.post('/', (req, res) => {
-    productServices.createNewProduct(req, res); // Llama a la función createNewProduct del servicio de productos para crear un nuevo producto
-    
+router.post('/', async (req, res) => {
+    const createProduct = await productServices.createNewProduct(req, res); // Llama a la función createNewProduct del servicio de productos para crear un nuevo producto
+    return createProduct
 });
 
-router.patch('/:id', (req, res) => {
-    const updateProduct = productServices.updateProduct(req, res); 
+router.patch('/:id', async (req, res) => {
+    const updateProduct = await productServices.updateProduct(req, res); 
     res.json(updateProduct);
 });
 
-router.delete('/:id', (req, res) => {
-    productServices.deleteProduct(req, res); 
+router.delete('/:id', async (req, res) => {
+    const updateProduct = await productServices.updateProduct(req, res); 
+    res.json(updateProduct);
 });
 
 
 // Define una ruta para la URL '/products' que responde con un objeto JSON que representa un producto
-router.get('/:id', (req, res) => { 
-    productServices.getOneProduct(req, res); 
+router.get('/:id', async (req, res) => { 
+    const getOneProduct = await productServices.getOneProduct(req, res); 
+    return getOneProduct
 });
 
 
