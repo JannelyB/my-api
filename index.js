@@ -1,4 +1,5 @@
 const express = require('express'); // Importa la librería Express para crear un servidor web
+const {errorLogs, handleError} = require('./middleware/error.handler'); // Importa los middlewares de manejo de errores desde el archivo 'middleware/error.handler.js'
 const app = express(); // Crea una instancia de la aplicación Express
 const apiRouter = require('./server'); // Importa el enrutador de la API desde el archivo 'server/index.js'
 const port = 3000; // Cambia esto al número de puerto que desees
@@ -21,9 +22,13 @@ app.get('api/v1/help', (req, res) => {
 */
 
 apiRouter(app) // Llama a la función apiRouter para configurar las rutas de la API
+app.use(handleError); // Agrega el middleware de handleError para manejar los errores y enviar una respuesta al cliente 
+app.use(errorLogs); // Agrega el middleware de errorLogs para registrar los errores
 
 
 // Inicia el servidor y escucha en el puerto especificado
 app.listen(port, () => {     
     console.log(`Escuchando en el puerto http://localhost:${port}`);
 });
+
+

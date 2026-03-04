@@ -3,9 +3,13 @@ const productServices = require('../services/servicesProducts'); // Importa el s
 const router = express.Router(); // Crea una instancia de un enrutador de Express
 
 
-router.get('/', async (req, res) => { 
-    const products = await productServices.getAllProducts(req, res); // Llama a la función getAllProducts del servicio de productos para obtener una lista de productos
-    res.json(products);
+router.get('/', async (req, res, next) => { 
+    try {
+        const products = await productServices.getAllProducts(req, res); // Llama a la función getAllProducts del servicio de productos para obtener una lista de productos
+        res.json(products);
+    } catch (error) {
+        next(error);
+    }
 });
 
 

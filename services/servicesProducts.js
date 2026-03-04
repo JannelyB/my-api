@@ -2,6 +2,7 @@ const faker = require('faker'); // Importa la librería Faker para generar datos
 
 
 const getAllProducts =(req, res) => {
+    const price = allPrice() 
     try {
         const products = []
         const {size} = req.query; // Extrae el parámetro de consulta 'size' de la URL
