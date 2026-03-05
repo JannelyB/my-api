@@ -1,10 +1,9 @@
 const faker = require('faker'); // Importa la librería Faker para generar datos falsos
-
+const boom = require('@hapi/boom'); // Importa la librería Boom para manejar errores de manera más estructurada
 
 const getAllProducts =(req, res) => {
     const price = allPrice() 
-    try {
-        const products = []
+    try {        const products = []
         const {size} = req.query; // Extrae el parámetro de consulta 'size' de la URL
         const limit = size || 5; // Si 'size' no está presente, se establece un valor predeterminado de 10
         for(let index = 0; index < limit; index++) {
@@ -39,6 +38,9 @@ const createNewProduct = (req, res) => {
 const updateProduct = (req, res) => {
     try {
         const {id} = req.params; // Extrae el valor del parámetro 'id' de la URL
+        if(id !=1){
+            throw boom.notFound('Product not found'); // Si el ID no es igual a 1, se lanza un error de tipo "Not Found" utilizando Boom
+        }
         const body = req.body;
         res.json({
             message: 'success',
