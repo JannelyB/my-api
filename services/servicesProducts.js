@@ -37,17 +37,18 @@ const createNewProduct = (req, res) => {
 
 const updateProduct = (req, res) => {
     try {
-        const {id} = req.params; // Extrae el valor del parámetro 'id' de la URL
-        if(id !=1){
-            throw boom.notFound('Product not found'); // Si el ID no es igual a 1, se lanza un error de tipo "Not Found" utilizando Boom
-        }
+        const { id } = req.params;
         const body = req.body;
+        
+        // Eliminamos el "if(id != 1)" porque ahora usas UUIDs
         res.json({
             message: 'success',
             product: body,
             id,
         });
     } catch (error) {
+        // En Express, para que el middleware de error funcione, 
+        // debes usar next(error) si recibes 'next' como argumento.
         console.error(error);
     }
 }
