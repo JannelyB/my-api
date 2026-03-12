@@ -7,15 +7,15 @@
     "dev": "nodemon index.js",
     "start": "node index.js",
     "lint": "eslint .",
-    "test": "mocha" 
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "chai": "^6.2.2",
-    "chai-http": "^5.1.2",
+    "chai": "^4.5.0",
+    "chai-http": "^4.4.0",
     "eslint": "^10.0.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
