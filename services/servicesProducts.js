@@ -1,24 +1,26 @@
 const faker = require('faker'); // Importa la librería Faker para generar datos falsos
 const boom = require('@hapi/boom'); // Importa la librería Boom para manejar errores de manera más estructurada
 
-const getAllProducts =(req, res) => {
-    const price = allPrice() 
-    try {        const products = []
-        const {size} = req.query; // Extrae el parámetro de consulta 'size' de la URL
-        const limit = size || 5; // Si 'size' no está presente, se establece un valor predeterminado de 10
+const getAllProducts = (req, res) => {
+    try { 
+        const products = [];
+        const { size } = req.query; 
+        const limit = size || 5; 
+
         for(let index = 0; index < limit; index++) {
-            // Genera un producto falso utilizando Faker y lo agrega al array 'products'
             products.push({
-                name:faker.commerce.productName(),
+                // Faker ya se encarga de generar el nombre, precio e imagen aquí abajo
+                name: faker.commerce.productName(),
                 price: parseInt(faker.commerce.price(), 10),
                 image: faker.image.imageUrl()
-            })
+            });
         }
-        return res.json(products); // Devuelve el array de productos generados como respuesta JSON
+        return res.json(products); 
     } catch (error) {
-        console.error(error); // Imprime cualquier error que ocurra durante la generación de productos
+        console.error(error);
+        // Es buena práctica enviar una respuesta de error al cliente
+        res.status(500).json({ message: "Error interno del servidor" });
     }
-    return products; // Devuelve el array de productos generados
 }
 
 

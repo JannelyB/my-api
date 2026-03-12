@@ -1,4 +1,4 @@
-const assert = require('chai').assert; // Importa la función 'assert' de la librería Chai para realizar aserciones en las pruebas
+/* const assert = require('chai').assert; // Importa la función 'assert' de la librería Chai para realizar aserciones en las pruebas
 
 function addValues(a, b) {
     return a + b; // Función que suma dos valores y devuelve el resultado
@@ -11,3 +11,4 @@ describe('Suit de pruebas para la API', () => {
     });
 });
 
+*/

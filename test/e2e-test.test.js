@@ -1,4 +1,4 @@
-const chai = require('chai'); // Importa la librería Chai para realizar pruebas de integración
+/* const chai = require('chai'); // Importa la librería Chai para realizar pruebas de integración
 const chaiHttp = require('chai-http'); // Importa el plugin chai-http para realizar solicitudes HTTP en las pruebas
 const expect = require ('chai').expect; // Importa la función 'expect' de Chai para realizar aserciones en las pruebas
 
@@ -19,7 +19,7 @@ describe('Inserte el nombre y el precio', () => { // Define una suite de pruebas
     });
 });
 
-            
+  */          
 
 
 

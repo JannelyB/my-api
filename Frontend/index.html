@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title> <link rel="stylesheet" href="style.css">
+</head>
+<body>  
+    <h1>Revisa la consola (F12)</h1>
+    <script>
+        (async () => {
+            try {
+                // He quitado el espacio inicial de la URL
+                const response = await fetch('https://pokeapi.co/api/v2/pokemon/ditto'); 
+                const data = await response.json(); 
+                console.log("Datos recibidos:", data); 
+            } catch (error) {
+                console.error("Error en la petición:", error);
+            }
+        })();
+    </script>
+</body>
+</html>
