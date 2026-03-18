@@ -3,7 +3,7 @@ const apiRouter = require('./server'); // Importa el enrutador de la API desde e
 const cors = require('cors'); // Importa la librería CORS para habilitar el intercambio de recursos entre diferentes orígenes (Cross-Origin Resource Sharing)
 const {errorLogs, handleError} = require('./middleware/error.handler'); // Importa los middlewares de manejo de errores desde el archivo 'middleware/error.handler.js'
 const app = express(); // Crea una instancia de la aplicación Express
-const port = 3000; // Cambia esto al número de puerto que desees
+const port = process.env.PORT  || 3000;  // Cambia esto al número de puerto que desees
 
 
 app.use(cors()); // Habilita CORS para todas las rutas de la aplicación
