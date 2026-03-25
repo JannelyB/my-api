@@ -1,9 +1,12 @@
+const getConnection = require('../libs/postgres')
 
+const getAllUsers = async (req, res) => {
 
-const getAllUsers = (req) => {
-    const{limit, offset} = req.query; // Extrae los parámetros de consulta 'limit' y 'offset' de la URL
-    return { limit, offset };
+    const client = await getConnection();
+    const response = await client.query('SELECT * FROM taks');
+    return response.rows;
 }
+
 
 module.exports = {
     getAllUsers

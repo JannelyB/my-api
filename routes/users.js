@@ -5,11 +5,11 @@ const router = express.Router(); // Crea una instancia de un enrutador de Expres
 // Define una ruta para la URL '/users' que responde con un objeto JSON que contiene los parámetros 'limit' y 'offset'
 
 router.get('/', async (req, res) => {
-    const { limit, offset } = servicesUsers.getAllUsers(req); // Llama a la función 'getAllUsers' del módulo de servicios para usuarios
-    if (limit && offset) {
-        res.json({ limit, offset });
-    } else {
-        res.send('Faltan parámetros');
+    try {
+        const getUsers = await servicesUsers.getAllUsers(req, res); // Llama a la función getAllUsers del módulo de servicios para usuarios
+        return res.send({getUsers}); // Envía la respuesta al cliente con los datos obtenidos de la función getAllUsers
+    } catch (error) {   
+        next(error); // Si ocurre un error, pasa el error al siguiente middleware de manejo de errores
     }
 });
 
