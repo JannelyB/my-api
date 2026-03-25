@@ -3,7 +3,7 @@ services:
     image: postgres:15.3
     container_name: postgres
     environment:
-      POSTGRES_USER: jlbarreto
+      POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin123
       POSTGRES_DB: my_api
     ports:
