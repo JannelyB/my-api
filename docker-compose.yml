@@ -1,24 +1,21 @@
 services:
-  postgres:
+  db-new: # Nombre de servicio único
     image: postgres:15.3
-    container_name: postgres
+    container_name: postgres-api-new
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin123
-      POSTGRES_DB: my_api
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_DB=my_api_db
     ports:
-      - "5433:5432"  
+      - "5433:5432" # Windows usará el 5433
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./postgres_data:/var/lib/postgresql/data # Carpeta local para los datos
 
-  pgadmin:
+  pgadmin-new:
     image: dpage/pgadmin4
-    container_name: pgadmin_container
+    container_name: pgadmin-api-new
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: root
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
     ports:
-      - "5050:80"    
-
-volumes:
-  postgres_data:
+      - "5051:80" # Usamos el 5051 para no chocar con tu otro pgAdmin
